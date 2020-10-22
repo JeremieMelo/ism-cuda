@@ -4,3 +4,8 @@
 *.ptx
 *.cubin
 *.fatbin
+*.tar.gz
+auction_experiment
+cuda_auction
+final
+bin
