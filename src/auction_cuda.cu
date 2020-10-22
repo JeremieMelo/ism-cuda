@@ -2,7 +2,7 @@
  * @Author: Jiaqi Gu (jqgu@utexas.edu)
  * @Date: 2020-10-22 12:18:52
  * @LastEditors: Jiaqi Gu (jqgu@utexas.edu)
- * @LastEditTime: 2020-10-22 13:01:43
+ * @LastEditTime: 2020-10-22 13:12:55
  */
 // auction_cuda.cu
 #ifndef MAIN_AUCTION
@@ -100,7 +100,7 @@ int main(int argc, char **argv)
     {
         input_graph = argv[1];
     }
-    std::cerr << "loading:\t" << input_graph << std::endl;
+    std::cerr << "[I] Loading:\t" << input_graph << std::endl;
     int num_nodes = NUM_NODES;
     int num_graphs = BATCH_SIZE;
     int *h_data = new int[num_graphs*num_nodes*num_nodes];
@@ -132,7 +132,7 @@ int main(int argc, char **argv)
     // // Print results
     for (int i = 0; i < 1; ++i)
     {
-        std::cerr << "solution " << i << "\n";
+        std::cerr << "[I] Solution " << i << "\n";
         for (int j = 0; j < num_nodes; j++) {
             std::cerr << j << ":" << h_person2item[i][j] << ", ";
         }
@@ -143,11 +143,11 @@ int main(int argc, char **argv)
             score += h_data[i*num_nodes*num_nodes+j * num_nodes + h_person2item[i][j]];
         }
 
-        std::cerr << "score=" << (int)score << std::endl;
+        std::cerr << "[I] Score of solution " << i << " = " << (int)score << std::endl;
 
     }
     delete[] h_data;
-    printf("[D] run_auction takes %g ms\n", (timer_stop-timer_start)*get_timer_period());
+    printf("[I] run_auction takes %g ms\n", (timer_stop-timer_start)*get_timer_period());
 }
 
 #endif
